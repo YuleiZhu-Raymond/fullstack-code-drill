@@ -1,0 +1,18 @@
+.color-renderer {
+  padding: 20px;
+}
+
+.color-button {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
