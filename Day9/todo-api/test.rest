@@ -1,0 +1,28 @@
+### 获取所有 Todo 项
+GET http://localhost:3000/api/todos
+
+###
+
+### 添加一个新 Todo 项
+POST http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+  "content": "Study Express.js"
+}
+
+###
+
+### 更新 Todo 状态
+PUT http://localhost:3000/api/todos/1
+Content-Type: application/json
+
+{
+  "completed": true,
+  "content": "Buy groceries and cook"
+}
+
+###
+
+### 删除某个 Todo 项
+DELETE http://localhost:3000/api/todos/2
