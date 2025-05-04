@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1746358647193,
+      "task": "Learn lowdb",
+      "done": false
+    },
+    {
+      "id": 1746360762382,
+      "task": "Finish homework",
+      "done": false
+    },
+    {
+      "id": 1746361088048,
+      "task": "Finish homework",
+      "done": false
+    }
+  ]
+}
