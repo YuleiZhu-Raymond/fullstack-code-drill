@@ -1,4 +1,4 @@
-const jwt = require("jasonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const loginUser = (req, res) => {
     const token = jwt.sign({ id: "12345" }, process.env.JWT_SECRET, {
