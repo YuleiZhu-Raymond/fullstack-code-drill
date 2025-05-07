@@ -1,0 +1,6 @@
+### geit profile
+GET http://localhost:3000/api/profile
+Authorization: Bearer <your_token>
+
+### 生成 token（模拟登录）
+POST http://localhost:3000/api/auth/login
