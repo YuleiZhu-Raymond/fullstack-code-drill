@@ -13,7 +13,7 @@ exports.registerUser = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, 10);
     const user = await User.create({ username, passwordHash });
 
-    res.status(201).json({ message: "User created", user: { id: user._id, username: user,username }})
+    res.status(201).json({ message: "User created", user: { id: user._id, username: user.username }})
 };
 
 exports.loginUser = async (req,res) => {
