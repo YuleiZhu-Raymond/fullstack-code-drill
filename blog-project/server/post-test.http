@@ -1,0 +1,15 @@
+### Create a new post（Need token）
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer {{your_token_here}}
+
+{
+  "title": "My Second Blog Post",
+  "content": "This is the content of my second post."
+}
+
+### Get all posts
+GET http://localhost:5000/api/posts
+
+### Get a single post
+GET http://localhost:5000/api/posts/{{post_id_here}}

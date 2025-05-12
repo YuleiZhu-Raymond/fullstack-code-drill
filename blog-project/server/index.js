@@ -7,11 +7,13 @@ require("dotenv").config();
 const app = express();
 
 const authRoutes = require("./routes/auth");
+const postRoutes = require("./routes/post");
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 app.use("/api", authRoutes);
+app.use("/api/posts", postRoutes);
 
 // Base route
 app.get("/", (req, res) => {
