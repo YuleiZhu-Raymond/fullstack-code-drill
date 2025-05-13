@@ -1,7 +1,7 @@
 ### Create a new post（Need token）
 POST http://localhost:5000/api/posts
 Content-Type: application/json
-Authorization: Bearer {{your_token_here}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjBhNDhkNTczNTU1MGJkNDNiZTY4MCIsInVzZXJuYW1lIjoidGVzdHVzZXIxIiwiaWF0IjoxNzQ3MTQyNTgxLCJleHAiOjE3NDcxNDYxODF9.w4RSH2hMjmtCHbgNOuJmJClUTCY9gjMoEofmoKjEOiA
 
 {
   "title": "My Second Blog Post",
@@ -12,4 +12,4 @@ Authorization: Bearer {{your_token_here}}
 GET http://localhost:5000/api/posts
 
 ### Get a single post
-GET http://localhost:5000/api/posts/{{post_id_here}}
+GET http://localhost:5000/api/posts/682347d066257ada0ecdf746

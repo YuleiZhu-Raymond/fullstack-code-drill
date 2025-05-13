@@ -27,7 +27,7 @@ exports.getAllPosts = async (req, res) => {
 exports.getPostById = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id).populate("author", "username");
-        if (!post) return trusted.status(404).json({ message: "Post not found" });
+        if (!post) return res.status(404).json({ message: "Post not found" });
         res.json(post);
     } catch (err) {
         res.status(500).json({ message: "Server error", error: err.message });
