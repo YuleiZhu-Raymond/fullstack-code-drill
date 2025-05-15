@@ -6,19 +6,23 @@ import RegisterPage from './pages/RegisterPage';
 import PostListPage from './pages/PostListPage';
 import PostDetailPage from './pages/PostDetailPage';
 import CreatePostPage from './pages/CreatePostPage';
+import Navbar from './components/Navbar';
 
 
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/login" />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/posts" element={<PostListPage />} />
-      <Route path="posts/:id" element={<PostDetailPage />} />
-      <Route path="/create-post" element={<CreatePostPage />} />    
-    </Routes>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/posts" element={<PostListPage />} />
+        <Route path="posts/:id" element={<PostDetailPage />} />
+        <Route path="/create-post" element={<CreatePostPage />} />    
+      </Routes>
+    </>
   );
 }
 

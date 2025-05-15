@@ -1,13 +1,38 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 
 function CreatePostPage() {
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+    const { token } = useContext(AuthContext);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Create post:', { title, content });
-        // TODO: Implement actual post creation
+        setError("");
+
+        try {
+            const res = await fetch("http://localhost:5000/api/posts", {
+                method: "POST",
+                headers: {
+                    "Content-Type" : "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ title, content }),
+            });
+
+            if (!res.ok) {
+                const data = await res.json();
+                throw new Error(data.message || "Failed to create post");
+            }
+
+            alert("Post published successfully!");
+            navigate("/posts");
+        }   catch (err) {
+            setErrror(res.message);
+        }
     };
 
     return (
