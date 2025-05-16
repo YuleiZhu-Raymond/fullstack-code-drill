@@ -33,3 +33,24 @@ exports.getPostById = async (req, res) => {
         res.status(500).json({ message: "Server error", error: err.message });
     }
 };
+
+exports.deletePost = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if(!post)return res.status(404).json({ message: "Post not found" });
+
+        console.log("post.author:", post.author, typeof post.author);
+        console.log("req.user.id:", req.user.id, typeof req.user.id);
+        console.log("String(post.author):", String(post.author));
+        console.log("String(req.user.id):", String(req.user.id));
+
+        if (String(post.author) !== String(req.user.id)) {
+            return res.status(403).json({ message: "Not allowed to delete this post" });
+        }
+
+        await post.remove();
+        res.json({ message: "Post deleted" });
+    }   catch (err) {
+        res.status(500).json({ message: "Server error", error:err.message });
+    }
+};

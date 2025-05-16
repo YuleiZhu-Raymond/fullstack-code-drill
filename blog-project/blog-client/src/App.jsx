@@ -7,7 +7,7 @@ import PostListPage from './pages/PostListPage';
 import PostDetailPage from './pages/PostDetailPage';
 import CreatePostPage from './pages/CreatePostPage';
 import Navbar from './components/Navbar';
-
+import RequireAuth from './components/RequireAuth';
 
 
 function App() {
@@ -20,7 +20,11 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/posts" element={<PostListPage />} />
         <Route path="posts/:id" element={<PostDetailPage />} />
-        <Route path="/create-post" element={<CreatePostPage />} />    
+        <Route path="/create-post" element={
+          <RequireAuth>
+            <CreatePostPage />
+          </RequireAuth>
+        } />    
       </Routes>
     </>
   );

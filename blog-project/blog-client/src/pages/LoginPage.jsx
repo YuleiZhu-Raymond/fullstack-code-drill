@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,8 +20,9 @@ function LoginPage() {
             });
 
             const data = await res.json();
+            console.log(data);
             if (res.ok) {
-                localStorage.setItem('token', data.token);
+                login(data.user, data.token);
                 navigate('/posts');
             } else {
                 setError(data.message || 'Login failed');
