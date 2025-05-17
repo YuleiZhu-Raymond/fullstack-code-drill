@@ -1,5 +1,4 @@
-
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
@@ -9,6 +8,7 @@ function PostDetailPage() {
     const {id} = useParams();
     const { user, token } = useContext(AuthContext);
     const [post, setPost] = useState(null);
+    const navigate = useNavigate();
     
 
     useEffect(() => {
@@ -25,10 +25,12 @@ function PostDetailPage() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            Navigate("/posts");
+            alert("Post deleted successfully");
+            navigate("/posts");
         }   catch (err) {
+            alert(err.response?.data?.message || "Delete failed");
             console.error("Delete failed", err);
-            alert("You are not allowed to delete this post");
+            
         }
     };
 

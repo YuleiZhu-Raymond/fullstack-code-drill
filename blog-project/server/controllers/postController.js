@@ -48,9 +48,29 @@ exports.deletePost = async (req, res) => {
             return res.status(403).json({ message: "Not allowed to delete this post" });
         }
 
-        await post.remove();
+        await Post.deleteOne({ _id: post._id });
         res.json({ message: "Post deleted" });
     }   catch (err) {
         res.status(500).json({ message: "Server error", error:err.message });
+    }
+};
+
+exports.updatePost = async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if(!post) return res.status(404).json({ message: "Post not found" });
+
+        if(post.author.toString() !== req.user.id) {
+            return res.status(403).json({ message: "Not allowed to edit thsi post" });
+        }
+
+        post.title = req.body.title || post.title;
+        post.content = req.body.content || post.content;
+
+        await post.save();
+
+        res.json({ message: "Post updated", post });
+    }   catch (err) {
+        res.status(500).json({ message: "Server error", error: err.message });
     }
 };

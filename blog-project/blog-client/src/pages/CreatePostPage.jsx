@@ -30,8 +30,8 @@ function CreatePostPage() {
 
             alert("Post published successfully!");
             navigate("/posts");
-        }   catch (err) {
-            setErrror(res.message);
+        } catch (err) {
+            setError(err.message);
         }
     };
 

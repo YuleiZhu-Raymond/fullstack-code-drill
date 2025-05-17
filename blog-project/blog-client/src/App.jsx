@@ -8,7 +8,7 @@ import PostDetailPage from './pages/PostDetailPage';
 import CreatePostPage from './pages/CreatePostPage';
 import Navbar from './components/Navbar';
 import RequireAuth from './components/RequireAuth';
-
+import EditPostPage from './pages/EditPostPage';
 
 function App() {
   return (
@@ -24,7 +24,8 @@ function App() {
           <RequireAuth>
             <CreatePostPage />
           </RequireAuth>
-        } />    
+        } />
+        <Route path="/edit-post/:id" element={<EditPostPage />} />
       </Routes>
     </>
   );
