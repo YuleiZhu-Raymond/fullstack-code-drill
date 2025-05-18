@@ -1,4 +1,3 @@
-
 import './App.css'
 import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
@@ -25,7 +24,7 @@ function App() {
             <CreatePostPage />
           </RequireAuth>
         } />
-        <Route path="/edit-post/:id" element={<EditPostPage />} />
+        <Route path="/posts/:id/edit" element={<EditPostPage />} />
       </Routes>
     </>
   );

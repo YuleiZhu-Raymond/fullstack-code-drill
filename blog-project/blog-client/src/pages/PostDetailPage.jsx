@@ -44,7 +44,10 @@ function PostDetailPage() {
             <p>Created at: {new Date(post.createdAt).toLocaleString()}</p>
 
             {user && user.id === post.author._id && (
-                <button onClick={handleDelete}>Delete Post</button>
+                <>
+                    <button onClick={handleDelete}>Delete Post</button>
+                    <button onClick={() => navigate(`/posts/${id}/edit`)}>Edit Post</button>
+                </>
             )}
         </div>
     );

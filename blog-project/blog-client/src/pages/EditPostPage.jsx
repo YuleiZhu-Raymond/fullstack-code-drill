@@ -9,16 +9,23 @@ function EditPostPage() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // 拉取原有内容
         fetch(`http://localhost:5000/api/posts/${id}`)
             .then(res => res.json())
             .then(data => {
+                console.log("post data:", data);
+                console.log("edit id:", id);
                 setTitle(data.title);
                 setContent(data.content);
+                setLoading(false);
             })
-            .catch(() => setError("Failed to load original content"));
+            .catch(() => {
+                setError("Failed to load original content");
+                setLoading(false);
+            });
     }, [id]);
 
     const handleSubmit = async (e) => {
@@ -43,6 +50,8 @@ function EditPostPage() {
             setError(err.message);
         }
     };
+
+    if (loading) return <div>Loading...</div>;
 
     return (
         <div style={{ maxWidth: '600px', margin: '40px auto', textAlign: 'center' }}>
