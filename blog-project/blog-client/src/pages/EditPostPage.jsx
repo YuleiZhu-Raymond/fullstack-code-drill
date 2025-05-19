@@ -12,7 +12,7 @@ function EditPostPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // 拉取原有内容
+        // pull the original content
         fetch(`http://localhost:5000/api/posts/${id}`)
             .then(res => res.json())
             .then(data => {
